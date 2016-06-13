@@ -79,6 +79,8 @@ public class BaseSolution {
             return Integer.valueOf(inputParam);
         } else if (typeName.equals("class [I")) {
             return readIntArray(inputParam);
+        } else if (typeName.equals(ListNode.class.toString())) {
+            return readListNode(inputParam);
         }
         return null;
     }
@@ -100,10 +102,41 @@ public class BaseSolution {
         return result;
     }
 
+    private ListNode readListNode(String line) {
+        ListNode head = null;
+        ListNode prevNode = null;
+        String regex = "[0-9]";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(line);
+        while (m.find()) {
+            ListNode newNode = new ListNode(Integer.valueOf(m.group(0)));
+            if (head == null) {
+                head = newNode;
+            }
+            if (prevNode != null) {
+                prevNode.next = newNode;
+            }
+            prevNode = newNode;
+        }
+        return head;
+    }
+
     private void printResult(Object result) {
         String name = result.getClass().getName();
         if (name.startsWith("[I")) {
             System.out.println(Arrays.toString((int[]) result));
+        } else if (name.equals(ListNode.class.getName())) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
+            ListNode node = (ListNode) result;
+            while (node != null) {
+                sb.append(node.val);
+                sb.append(",");
+                node = node.next;
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            sb.append("]");
+            System.out.println(sb.toString());
         } else {
             System.out.println(result);
         }
