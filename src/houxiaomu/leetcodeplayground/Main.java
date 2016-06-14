@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("hello, world!");
 //        runSolution("twosum");
-        runSolution("addtwonumbers");
+//        runSolution("addtwonumbers");
+        runSolution("sametree");
     }
 
     private static void runSolution(String solutionName) {

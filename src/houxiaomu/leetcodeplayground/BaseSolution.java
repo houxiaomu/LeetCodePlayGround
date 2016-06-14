@@ -1,14 +1,19 @@
 package houxiaomu.leetcodeplayground;
 
+import houxiaomu.leetcodeplayground.twosum.TreeNode;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -70,6 +75,12 @@ public class BaseSolution {
                 break;
             }
         }
+        for (int i = 0; i < methods.length; i++) {
+            if (methods[i].getModifiers() == Modifier.PUBLIC) {
+                method = methods[i];
+                break;
+            }
+        }
         return method;
     }
 
@@ -81,8 +92,45 @@ public class BaseSolution {
             return readIntArray(inputParam);
         } else if (typeName.equals(ListNode.class.toString())) {
             return readListNode(inputParam);
+        } else if (typeName.equals(TreeNode.class.toString())) {
+            return readTreeNode(inputParam);
         }
         return null;
+    }
+
+    private TreeNode readTreeNode(String line) {
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        TreeNode root = null;
+        String regex = "[0-9]|null";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(line);
+        while (m.find()) {
+            TreeNode node = queue.poll();
+            if (node == null) {
+                root = newNode(m.group(0));
+                queue.add(root);
+            } else {
+                node.left = newNode(m.group(0));
+                if (m.find()) {
+                    node.right = newNode(m.group(0));
+                }
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+        }
+        return root;
+    }
+
+    private TreeNode newNode(String val) {
+        if (val.equals("null")) {
+            return null;
+        } else {
+            return new TreeNode(Integer.valueOf(val));
+        }
     }
 
 
