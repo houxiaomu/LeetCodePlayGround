@@ -5,8 +5,11 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("hello, world!");
 //        runSolution("twosum");
-//        runSolution("addtwonumbers");
-        runSolution("sametree");
+//        runSolution("add_two_numbers");
+//        runSolution("same_tree");
+//        runSolution("symmetric_tree");
+//        runSolution("binary_tree_level_order_traversal");
+        runSolution("binary_tree_zigzag_level_order_traversal");
     }
 
     private static void runSolution(String solutionName) {

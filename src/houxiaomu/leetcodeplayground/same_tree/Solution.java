@@ -1,4 +1,4 @@
-package houxiaomu.leetcodeplayground.sametree;
+package houxiaomu.leetcodeplayground.same_tree;
 
 import houxiaomu.leetcodeplayground.BaseSolution;
 import houxiaomu.leetcodeplayground.twosum.TreeNode;

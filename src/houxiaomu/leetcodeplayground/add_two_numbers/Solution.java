@@ -1,4 +1,4 @@
-package houxiaomu.leetcodeplayground.addtwonumbers;
+package houxiaomu.leetcodeplayground.add_two_numbers;
 
 import houxiaomu.leetcodeplayground.BaseSolution;
 import houxiaomu.leetcodeplayground.ListNode;
