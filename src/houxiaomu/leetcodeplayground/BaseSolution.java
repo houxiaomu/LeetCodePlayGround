@@ -101,7 +101,7 @@ public class BaseSolution {
     private TreeNode readTreeNode(String line) {
         Queue<TreeNode> queue = new ArrayDeque<>();
         TreeNode root = null;
-        String regex = "[0-9]|null";
+        String regex = "-?[0-9]\\d*|null";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(line);
         while (m.find()) {
@@ -136,7 +136,7 @@ public class BaseSolution {
 
     private int[] readIntArray(String line) {
         ArrayList<String> list = new ArrayList<>();
-        String regex = "[0-9]";
+        String regex = "-?[0-9]\\d*";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(line);
         while (m.find()) {
@@ -153,7 +153,7 @@ public class BaseSolution {
     private ListNode readListNode(String line) {
         ListNode head = null;
         ListNode prevNode = null;
-        String regex = "[0-9]";
+        String regex = "-?[0-9]\\d*";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(line);
         while (m.find()) {

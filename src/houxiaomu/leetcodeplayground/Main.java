@@ -9,7 +9,8 @@ public class Main {
 //        runSolution("same_tree");
 //        runSolution("symmetric_tree");
 //        runSolution("binary_tree_level_order_traversal");
-        runSolution("binary_tree_zigzag_level_order_traversal");
+//        runSolution("binary_tree_zigzag_level_order_traversal");
+        runSolution("validate_binary_search_tree");
     }
 
     private static void runSolution(String solutionName) {
