@@ -88,6 +88,8 @@ public class BaseSolution {
         String typeName = type.toString();
         if (typeName.equals("int")) {
             return Integer.valueOf(inputParam);
+        } else if (typeName.equals(String.class.toString())) {
+            return readString(inputParam);
         } else if (typeName.equals("class [I")) {
             return readIntArray(inputParam);
         } else if (typeName.equals(ListNode.class.toString())) {
@@ -96,6 +98,17 @@ public class BaseSolution {
             return readTreeNode(inputParam);
         }
         return null;
+    }
+
+    private String readString(String line) {
+        String regex = "\\\"([^\\\"]*)\\\"";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(line);
+        if (m.find()) {
+            String str = m.group(0);
+            return str.substring(1, str.length() - 1);
+        }
+        return "";
     }
 
     private TreeNode readTreeNode(String line) {
