@@ -15,7 +15,7 @@ public class Main {
 //        runSolution("reverse_linked_list_ii");
 //        runSolution("decode_ways"); //NOT FINISHED
 //        runSolution("gray_code");
-        runSolution("merge_sorted_array");
+        runSolution("partition_list");
     }
 
     private static void runSolution(String solutionName) {
