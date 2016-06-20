@@ -34,20 +34,12 @@ public class BaseSolution {
             while (true) {
                 String line = reader.readLine();
                 if (line == null) break;
-
                 if (i < genericParameterTypes.length) {
                     params[i] = convertToParams(genericParameterTypes[i], line);
                     i++;
                     if (i == genericParameterTypes.length) {
                         i = 0;
-                        try {
-                            Object result = method.invoke(this, params);
-                            printResult(result);
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        } catch (InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
+                        invokeRunMethod(method, params);
                     }
                 }
 
@@ -61,6 +53,17 @@ public class BaseSolution {
                 } catch (Exception e) {
                 }
             }
+        }
+    }
+
+    protected void invokeRunMethod(Method method, Object[] params) {
+        try {
+            Object result = method.invoke(this, params);
+            printResult(result);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
     }
 
@@ -182,7 +185,11 @@ public class BaseSolution {
         return head;
     }
 
-    private void printResult(Object result) {
+    protected void printResult(Object result) {
+        if (result == null) {
+            return;
+        }
+
         String name = result.getClass().getName();
         if (name.startsWith("[I")) {
             System.out.println(Arrays.toString((int[]) result));

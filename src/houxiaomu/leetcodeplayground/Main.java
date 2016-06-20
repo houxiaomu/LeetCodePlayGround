@@ -14,7 +14,8 @@ public class Main {
 //        runSolution("restore_ip_addresses");
 //        runSolution("reverse_linked_list_ii");
 //        runSolution("decode_ways"); //NOT FINISHED
-        runSolution("gray_code");
+//        runSolution("gray_code");
+        runSolution("merge_sorted_array");
     }
 
     private static void runSolution(String solutionName) {
