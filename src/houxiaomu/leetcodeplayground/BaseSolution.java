@@ -31,6 +31,7 @@ public class BaseSolution {
             reader = new BufferedReader(new InputStreamReader(is));
             Object[] params = new Object[genericParameterTypes.length];
             int i = 0;
+            long time = System.currentTimeMillis();
             while (true) {
                 String line = reader.readLine();
                 if (line == null) break;
@@ -42,8 +43,8 @@ public class BaseSolution {
                         invokeRunMethod(method, params);
                     }
                 }
-
             }
+            System.out.println("total time: " + (System.currentTimeMillis() - time) + "ms");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
