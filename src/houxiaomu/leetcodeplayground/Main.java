@@ -3,7 +3,6 @@ package houxiaomu.leetcodeplayground;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("hello, world!");
 //        runSolution("twosum");
 //        runSolution("add_two_numbers");
 //        runSolution("same_tree");
@@ -16,10 +15,13 @@ public class Main {
 //        runSolution("decode_ways"); //NOT FINISHED
 //        runSolution("gray_code");
 //        runSolution("partition_list");
-        runSolution("longest_palindromic_substring");
+//        runSolution("longest_palindromic_substring");
+//        runSolution("largest_rectangle_in_histogram");
+        runSolution("zigzag_conversion");
     }
 
     private static void runSolution(String solutionName) {
+        System.out.println("running "+solutionName);
         String className = Main.class.getPackage().getName() + "." + solutionName + ".Solution";
         try {
             Class<?> clazz = Class.forName(className);
