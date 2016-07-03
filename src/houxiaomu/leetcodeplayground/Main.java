@@ -17,7 +17,8 @@ public class Main {
 //        runSolution("partition_list");
 //        runSolution("longest_palindromic_substring");
 //        runSolution("largest_rectangle_in_histogram");
-        runSolution("zigzag_conversion");
+//        runSolution("zigzag_conversion");
+        runSolution("string_to_integer_atoi");
     }
 
     private static void runSolution(String solutionName) {
