@@ -15,7 +15,8 @@ public class Main {
 //        runSolution("reverse_linked_list_ii");
 //        runSolution("decode_ways"); //NOT FINISHED
 //        runSolution("gray_code");
-        runSolution("partition_list");
+//        runSolution("partition_list");
+        runSolution("longest_palindromic_substring");
     }
 
     private static void runSolution(String solutionName) {
