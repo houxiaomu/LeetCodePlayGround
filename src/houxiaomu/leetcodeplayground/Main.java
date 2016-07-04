@@ -15,10 +15,9 @@ public class Main {
 //        runSolution("decode_ways"); //NOT FINISHED
 //        runSolution("gray_code");
 //        runSolution("partition_list");
-//        runSolution("longest_palindromic_substring");
 //        runSolution("largest_rectangle_in_histogram");
 //        runSolution("zigzag_conversion");
-        runSolution("string_to_integer_atoi");
+        runSolution("palindrome_number");
     }
 
     private static void runSolution(String solutionName) {
