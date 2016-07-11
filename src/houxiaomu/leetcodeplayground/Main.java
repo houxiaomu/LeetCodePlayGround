@@ -17,7 +17,8 @@ public class Main {
 //        runSolution("partition_list");
 //        runSolution("largest_rectangle_in_histogram");
 //        runSolution("zigzag_conversion");
-        runSolution("palindrome_number");
+//        runSolution("palindrome_number");
+        runSolution("integer_to_roman");
     }
 
     private static void runSolution(String solutionName) {
