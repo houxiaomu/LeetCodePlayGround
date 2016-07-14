@@ -96,12 +96,27 @@ public class BaseSolution {
             return readString(inputParam);
         } else if (typeName.equals("class [I")) {
             return readIntArray(inputParam);
+        } else if (typeName.equals("class [Ljava.lang.String;")) {
+            return readStringArray(inputParam);
         } else if (typeName.equals(ListNode.class.toString())) {
             return readListNode(inputParam);
         } else if (typeName.equals(TreeNode.class.toString())) {
             return readTreeNode(inputParam);
         }
         return null;
+    }
+
+    private String[] readStringArray(String line) {
+        String regex = "\\\"([^\\\"]*)\\\"";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(line);
+        ArrayList<String> list = new ArrayList<>();
+        while (m.find()) {
+            String str = m.group(0);
+            list.add(str.substring(1, str.length() - 1));
+        }
+        String[] result = new String[list.size()];
+        return list.toArray(result);
     }
 
     private String readString(String line) {

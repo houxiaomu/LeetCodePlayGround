@@ -19,7 +19,8 @@ public class Main {
 //        runSolution("zigzag_conversion");
 //        runSolution("palindrome_number");
 //        runSolution("integer_to_roman");
-        runSolution("roman_to_integer");
+//        runSolution("roman_to_integer");
+        runSolution("longest_common_prefix");
 
     }
 
