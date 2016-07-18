@@ -20,7 +20,8 @@ public class Main {
 //        runSolution("palindrome_number");
 //        runSolution("integer_to_roman");
 //        runSolution("roman_to_integer");
-        runSolution("longest_common_prefix");
+//        runSolution("longest_common_prefix");
+        runSolution("three_sum");
 
     }
 
