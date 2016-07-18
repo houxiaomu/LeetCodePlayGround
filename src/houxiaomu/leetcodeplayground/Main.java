@@ -21,7 +21,8 @@ public class Main {
 //        runSolution("integer_to_roman");
 //        runSolution("roman_to_integer");
 //        runSolution("longest_common_prefix");
-        runSolution("three_sum");
+//        runSolution("three_sum");
+        runSolution("three_sum_closest");
 
     }
 
