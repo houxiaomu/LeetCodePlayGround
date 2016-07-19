@@ -22,8 +22,8 @@ public class Main {
 //        runSolution("roman_to_integer");
 //        runSolution("longest_common_prefix");
 //        runSolution("three_sum");
-        runSolution("three_sum_closest");
-
+//        runSolution("three_sum_closest");
+        runSolution("letter_combinations_of_a_phone_number");
     }
 
     private static void runSolution(String solutionName) {
