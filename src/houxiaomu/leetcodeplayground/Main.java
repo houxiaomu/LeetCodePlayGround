@@ -23,7 +23,8 @@ public class Main {
 //        runSolution("longest_common_prefix");
 //        runSolution("three_sum");
 //        runSolution("three_sum_closest");
-        runSolution("letter_combinations_of_a_phone_number");
+//        runSolution("letter_combinations_of_a_phone_number");
+        runSolution("remove_nth_node_from_end_of_list");
     }
 
     private static void runSolution(String solutionName) {
