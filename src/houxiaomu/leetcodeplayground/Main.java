@@ -24,7 +24,9 @@ public class Main {
 //        runSolution("three_sum");
 //        runSolution("three_sum_closest");
 //        runSolution("letter_combinations_of_a_phone_number");
-        runSolution("remove_nth_node_from_end_of_list");
+//        runSolution("remove_nth_node_from_end_of_list");
+//        runSolution("valid_parentheses");
+        runSolution("merge_two_sorted_lists");
     }
 
     private static void runSolution(String solutionName) {
