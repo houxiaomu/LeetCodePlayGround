@@ -26,7 +26,8 @@ public class Main {
 //        runSolution("letter_combinations_of_a_phone_number");
 //        runSolution("remove_nth_node_from_end_of_list");
 //        runSolution("valid_parentheses");
-        runSolution("merge_two_sorted_lists");
+//        runSolution("merge_two_sorted_lists");
+        runSolution("generate_parentheses");
     }
 
     private static void runSolution(String solutionName) {
