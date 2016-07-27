@@ -6,10 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +22,7 @@ public class BaseSolution {
     public void runTestCases() {
         Method method = getRunMethod();
         Type[] genericParameterTypes = method.getGenericParameterTypes();
+        Class<?>[] parameterTypes = method.getParameterTypes();
         BufferedReader reader = null;
         try {
             InputStream is = this.getClass().getResourceAsStream("./testcase.txt");
@@ -36,6 +34,7 @@ public class BaseSolution {
                 String line = reader.readLine();
                 if (line == null) break;
                 if (i < genericParameterTypes.length) {
+                    Class<?> cls = (Class<?>) genericParameterTypes[i];
                     params[i] = convertToParams(genericParameterTypes[i], line);
                     i++;
                     if (i == genericParameterTypes.length) {
@@ -97,12 +96,36 @@ public class BaseSolution {
         } else if (typeName.equals("class [I")) {
             return readIntArray(inputParam);
         } else if (typeName.equals("class [Ljava.lang.String;")) {
-            return readStringArray(inputParam);
+//            return readStringArray(inputParam);
+            return readObjectArray(type, inputParam);
         } else if (typeName.equals(ListNode.class.toString())) {
             return readListNode(inputParam);
         } else if (typeName.equals(TreeNode.class.toString())) {
             return readTreeNode(inputParam);
+        } else if (typeName.equals("class [Lhouxiaomu.leetcodeplayground.ListNode;")) {
+            return readObjectArray(type, inputParam);
         }
+        return null;
+    }
+
+    private <T> T[] readObjectArray(Type type, String line) {
+        try {
+            String regex = "\\[([^\\[\\]]+)\\]";
+            Pattern p = Pattern.compile(regex);
+            Matcher m = p.matcher(line);
+            ArrayList<Object> list = new ArrayList<>();
+            Class componentClass = ((Class) type).getComponentType();
+            while (m.find()) {
+                String str = m.group(0);
+                Object o = convertToParams(componentClass, str);
+                list.add(o);
+            }
+            T[] array = (T[]) Array.newInstance(componentClass, list.size());
+            return list.toArray(array);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 

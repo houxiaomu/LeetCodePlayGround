@@ -27,7 +27,8 @@ public class Main {
 //        runSolution("remove_nth_node_from_end_of_list");
 //        runSolution("valid_parentheses");
 //        runSolution("merge_two_sorted_lists");
-        runSolution("generate_parentheses");
+//        runSolution("generate_parentheses");
+        runSolution("merge_k_sorted_lists");
     }
 
     private static void runSolution(String solutionName) {
