@@ -1,7 +1,5 @@
 package houxiaomu.leetcodeplayground;
 
-import houxiaomu.leetcodeplayground.twosum.TreeNode;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

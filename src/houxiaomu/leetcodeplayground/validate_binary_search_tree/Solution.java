@@ -1,12 +1,7 @@
 package houxiaomu.leetcodeplayground.validate_binary_search_tree;
 
 import houxiaomu.leetcodeplayground.BaseSolution;
-import houxiaomu.leetcodeplayground.twosum.TreeNode;
-
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import houxiaomu.leetcodeplayground.TreeNode;
 
 /**
  * Created by Simon on 2016/6/14.

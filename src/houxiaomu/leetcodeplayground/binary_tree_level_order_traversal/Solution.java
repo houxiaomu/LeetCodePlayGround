@@ -1,7 +1,7 @@
 package houxiaomu.leetcodeplayground.binary_tree_level_order_traversal;
 
 import houxiaomu.leetcodeplayground.BaseSolution;
-import houxiaomu.leetcodeplayground.twosum.TreeNode;
+import houxiaomu.leetcodeplayground.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package houxiaomu.leetcodeplayground.twosum;
+package houxiaomu.leetcodeplayground;
 
 /**
  * Created by Simon on 2016/6/14.

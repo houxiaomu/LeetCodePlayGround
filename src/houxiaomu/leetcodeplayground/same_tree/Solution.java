@@ -1,7 +1,7 @@
 package houxiaomu.leetcodeplayground.same_tree;
 
 import houxiaomu.leetcodeplayground.BaseSolution;
-import houxiaomu.leetcodeplayground.twosum.TreeNode;
+import houxiaomu.leetcodeplayground.TreeNode;
 
 /**
  * Created by Simon on 2016/6/14.
