@@ -28,7 +28,10 @@ public class Main {
 //        runSolution("valid_parentheses");
 //        runSolution("merge_two_sorted_lists");
 //        runSolution("generate_parentheses");
-        runSolution("merge_k_sorted_lists");
+//        runSolution("merge_k_sorted_lists");
+//        runSolution("swap_nodes_in_pairs");
+//        runSolution("reverse_nodes_in_k_group");
+        runSolution("remove_duplicates_from_sorted_array");
     }
 
     private static void runSolution(String solutionName) {
