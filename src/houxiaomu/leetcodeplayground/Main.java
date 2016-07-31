@@ -31,7 +31,9 @@ public class Main {
 //        runSolution("merge_k_sorted_lists");
 //        runSolution("swap_nodes_in_pairs");
 //        runSolution("reverse_nodes_in_k_group");
-        runSolution("remove_duplicates_from_sorted_array");
+//        runSolution("remove_duplicates_from_sorted_array");
+//        runSolution("search_for_a_range");
+        runSolution("search_insert_position");
     }
 
     private static void runSolution(String solutionName) {
