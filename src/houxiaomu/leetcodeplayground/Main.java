@@ -31,7 +31,11 @@ public class Main {
 //        runSolution("merge_k_sorted_lists");
 //        runSolution("swap_nodes_in_pairs");
 //        runSolution("reverse_nodes_in_k_group");
-        runSolution("remove_duplicates_from_sorted_array");
+//        runSolution("remove_duplicates_from_sorted_array");
+//        runSolution("remove_element");
+//        runSolution("implement_strstr");
+//        runSolution("divide_two_integers");
+        runSolution("valid_sudoku");
     }
 
     private static void runSolution(String solutionName) {
