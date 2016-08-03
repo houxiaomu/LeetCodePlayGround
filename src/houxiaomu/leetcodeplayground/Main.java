@@ -38,7 +38,8 @@ public class Main {
 //        runSolution("remove_element");
 //        runSolution("implement_strstr");
 //        runSolution("divide_two_integers");
-        runSolution("valid_sudoku");
+//        runSolution("valid_sudoku");
+        runSolution("sudoku_solver");
     }
 
     private static void runSolution(String solutionName) {
