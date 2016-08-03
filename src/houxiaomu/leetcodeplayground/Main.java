@@ -33,7 +33,12 @@ public class Main {
 //        runSolution("reverse_nodes_in_k_group");
 //        runSolution("remove_duplicates_from_sorted_array");
 //        runSolution("search_for_a_range");
-        runSolution("search_insert_position");
+//        runSolution("search_insert_position");
+//        runSolution("remove_duplicates_from_sorted_array");
+//        runSolution("remove_element");
+//        runSolution("implement_strstr");
+//        runSolution("divide_two_integers");
+        runSolution("valid_sudoku");
     }
 
     private static void runSolution(String solutionName) {

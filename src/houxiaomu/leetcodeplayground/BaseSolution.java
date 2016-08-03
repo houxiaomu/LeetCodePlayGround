@@ -94,7 +94,6 @@ public class BaseSolution {
         } else if (typeName.equals("class [I")) {
             return readIntArray(inputParam);
         } else if (typeName.equals("class [Ljava.lang.String;")) {
-//            return readStringArray(inputParam);
             return readObjectArray(type, inputParam);
         } else if (typeName.equals(ListNode.class.toString())) {
             return readListNode(inputParam);
@@ -102,8 +101,28 @@ public class BaseSolution {
             return readTreeNode(inputParam);
         } else if (typeName.equals("class [Lhouxiaomu.leetcodeplayground.ListNode;")) {
             return readObjectArray(type, inputParam);
+        } else if (typeName.equals("class [[C")) {
+            return read2DimCharArray(type, inputParam);
         }
         return null;
+    }
+
+    private Object read2DimCharArray(Type type, String inputParam) {
+        String regex = "\\\"([^\\\"]*)\\\"";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(inputParam);
+        ArrayList<String> list = new ArrayList<>();
+        while (m.find()) {
+            String str = m.group(0);
+            str = str.substring(1, str.length() - 1);
+            list.add(str);
+        }
+        int line = list.size();
+        char[][] result = new char[line][];
+        for (int i = 0; i < line; i++) {
+            result[i] = list.get(i).toCharArray();
+        }
+        return result;
     }
 
     private <T> T[] readObjectArray(Type type, String line) {
