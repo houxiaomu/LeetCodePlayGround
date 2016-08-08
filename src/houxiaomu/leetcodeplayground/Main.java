@@ -40,7 +40,9 @@ public class Main {
 //        runSolution("divide_two_integers");
 //        runSolution("valid_sudoku");
 //        runSolution("sudoku_solver");
-        runSolution("count_and_say");
+//        runSolution("count_and_say");
+//        runSolution("combination_sum");
+        runSolution("combination_sum_2");
     }
 
     private static void runSolution(String solutionName) {
