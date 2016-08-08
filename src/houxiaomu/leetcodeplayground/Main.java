@@ -39,7 +39,8 @@ public class Main {
 //        runSolution("implement_strstr");
 //        runSolution("divide_two_integers");
 //        runSolution("valid_sudoku");
-        runSolution("sudoku_solver");
+//        runSolution("sudoku_solver");
+        runSolution("count_and_say");
     }
 
     private static void runSolution(String solutionName) {

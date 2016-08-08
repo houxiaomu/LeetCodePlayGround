@@ -68,28 +68,18 @@ public class Solution extends BaseSolution {
 
             if (wrong) {
                 //wrong assume, restore to previous snapshot
-                while (true) {
-                    System.out.println("restore snapshot total " + snapShots.size());
-                    SnapShot snapShot = snapShots.pop();
-                    if (snapShot == null) {
-                        //WRONG!!!
-                        System.out.println("wrong!!!!");
-                        break;
-                    }
-                    if (snapShot.candidates.size() > 0) {
-                        for (int i = 0; i < 9; i++) {
-                            board[i] = Arrays.copyOf(snapShot.board[i], 9);
-                        }
-                        char c = (char) snapShot.candidates.iterator().next();
-                        snapShot.candidates.remove(c);
-                        board[snapShot.row][snapShot.col] = c;
-                        if (snapShot.candidates.size() > 0) {
-                            snapShots.push(snapShot);
-                        }
-                        dump(board);
-                        break;
-                    }
+                System.out.println("restore snapshot total " + snapShots.size());
+                SnapShot snapShot = snapShots.pop();
+                for (int i = 0; i < 9; i++) {
+                    board[i] = Arrays.copyOf(snapShot.board[i], 9);
                 }
+                char c = (char) snapShot.candidates.iterator().next();
+                snapShot.candidates.remove(c);
+                board[snapShot.row][snapShot.col] = c;
+                if (snapShot.candidates.size() > 0) {
+                    snapShots.push(snapShot);
+                }
+                dump(board);
             } else if (done) {
                 break;
             } else if (!changed) {
@@ -99,7 +89,7 @@ public class Solution extends BaseSolution {
                     char c = (char) tmpCandidate.iterator().next();
                     tmpCandidate.remove(c);
                     board[tmpRow][tmpCol] = c;
-                    if (tmpCandidate.size() >= 1) {
+                    if (tmpCandidate.size() > 0) {
                         SnapShot snapshot = new SnapShot(board, tmpRow, tmpCol, tmpCandidate);
                         snapShots.push(snapshot);
                         System.out.println("take snapshot [" + tmpRow + "][" + tmpCol + "] char='" + c + "' remainCandidates=" + candidateToStr(tmpCandidate));
