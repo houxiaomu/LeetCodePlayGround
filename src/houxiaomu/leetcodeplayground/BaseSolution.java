@@ -57,7 +57,7 @@ public class BaseSolution {
     protected void invokeRunMethod(Method method, Object[] params) {
         try {
             Object result = method.invoke(this, params);
-            printResult(result);
+            printResult(params, result);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -94,7 +94,7 @@ public class BaseSolution {
         } else if (typeName.equals("class [I")) {
             return readIntArray(inputParam);
         } else if (typeName.equals("class [Ljava.lang.String;")) {
-            return readObjectArray(type, inputParam);
+            return readStringArray(inputParam);
         } else if (typeName.equals(ListNode.class.toString())) {
             return readListNode(inputParam);
         } else if (typeName.equals(TreeNode.class.toString())) {
@@ -103,6 +103,9 @@ public class BaseSolution {
             return readObjectArray(type, inputParam);
         } else if (typeName.equals("class [[C")) {
             return read2DimCharArray(type, inputParam);
+        } else if (typeName.equals("class [[I")) {
+            //return read2DimIntArray(type, inputParam);
+            return readObjectArray(type, inputParam);
         }
         return null;
     }
@@ -239,6 +242,10 @@ public class BaseSolution {
             prevNode = newNode;
         }
         return head;
+    }
+
+    protected void printResult(Object[] params, Object result) {
+        printResult(result);
     }
 
     protected void printResult(Object result) {

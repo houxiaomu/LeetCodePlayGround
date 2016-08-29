@@ -42,7 +42,12 @@ public class Main {
 //        runSolution("sudoku_solver");
 //        runSolution("count_and_say");
 //        runSolution("combination_sum");
-        runSolution("combination_sum_2");
+//        runSolution("combination_sum_2");
+//        runSolution("multiply_strings");
+//        runSolution("permutations");
+//        runSolution("permutations_ii");
+//        runSolution("rotate_image");
+        runSolution("anagrams");
     }
 
     private static void runSolution(String solutionName) {
