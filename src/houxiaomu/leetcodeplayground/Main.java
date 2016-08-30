@@ -47,7 +47,12 @@ public class Main {
 //        runSolution("permutations");
 //        runSolution("permutations_ii");
 //        runSolution("rotate_image");
-        runSolution("anagrams");
+//        runSolution("anagrams");
+//        runSolution("maximum_subarray");
+//        runSolution("spiral_matrix");
+//        runSolution("jump_game");
+//        runSolution("length_of_last_word");
+        runSolution("spiral_matrix_ii");
     }
 
     private static void runSolution(String solutionName) {
