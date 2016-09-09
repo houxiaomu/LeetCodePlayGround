@@ -52,7 +52,8 @@ public class Main {
 //        runSolution("spiral_matrix");
 //        runSolution("jump_game");
 //        runSolution("length_of_last_word");
-        runSolution("spiral_matrix_ii");
+//        runSolution("spiral_matrix_ii");
+        runSolution("permutation_sequence");
     }
 
     private static void runSolution(String solutionName) {
