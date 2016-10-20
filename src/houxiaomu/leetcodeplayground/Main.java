@@ -53,11 +53,17 @@ public class Main {
 //        runSolution("jump_game");
 //        runSolution("length_of_last_word");
 //        runSolution("spiral_matrix_ii");
-        runSolution("permutation_sequence");
+//        runSolution("permutation_sequence");
+//        runSolution("rotate_list");
+//        runSolution("plus_one");
+//        runSolution("add_binary");
+//        runSolution("unique_paths");
+//        runSolution("unique_paths2");
+        runSolution("minimum_path_sum");
     }
 
     private static void runSolution(String solutionName) {
-        System.out.println("running "+solutionName);
+        System.out.println("running " + solutionName);
         String className = Main.class.getPackage().getName() + "." + solutionName + ".Solution";
         try {
             Class<?> clazz = Class.forName(className);
