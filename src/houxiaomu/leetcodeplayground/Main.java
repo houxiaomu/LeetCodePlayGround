@@ -59,7 +59,24 @@ public class Main {
 //        runSolution("add_binary");
 //        runSolution("unique_paths");
 //        runSolution("unique_paths2");
-        runSolution("minimum_path_sum");
+//        runSolution("minimum_path_sum");
+//        runSolution("climbing_stairs");
+//        runSolution("simplify_path");
+//        runSolution("search_a_2d_matrix");
+//        runSolution("combinations");
+//        runSolution("binary_tree_inorder_traversal");
+//        runSolution("maximum_depth_of_binary_tree");
+//        runSolution("subsets");
+//        runSolution("combinations");
+//        runSolution("unique_binary_search_trees_ii");
+//        runSolution("nearest_gate_maze");
+//        runSolution("count_bst_nodes_in_range");
+//        runSolution("word_search");
+//        runSolution("construct_binary_tree_from_preorder_and_inorder_traversal");
+//        runSolution("convert_sorted_array_to_binary_search_tree");
+//        runSolution("balanced_binary_tree");
+//        runSolution("path_sum_ii");
+        runSolution("flatten_binary_tree_to_linked_list");
     }
 
     private static void runSolution(String solutionName) {

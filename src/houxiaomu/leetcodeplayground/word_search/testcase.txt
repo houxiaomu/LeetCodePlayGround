@@ -1,0 +1,8 @@
+["ABCE","SFES","ADEE"]
+"ABCESEEEFS"
+["ABCE","SFCS","ADEE"]
+"ABCB"
+["ABCE","SFCS","ADEE"]
+"SEE"
+["ABCE","SFCS","ADEE"]
+"ABCCED"

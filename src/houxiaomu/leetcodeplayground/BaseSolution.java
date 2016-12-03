@@ -268,6 +268,8 @@ public class BaseSolution {
             sb.deleteCharAt(sb.length() - 1);
             sb.append("]");
             System.out.println(sb.toString());
+        } else if (name.equals(TreeNode.class.getName())) {
+            TreePrinter.printNode((TreeNode) result);
         } else {
             System.out.println(result);
         }
