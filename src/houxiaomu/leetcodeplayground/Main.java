@@ -76,7 +76,41 @@ public class Main {
 //        runSolution("convert_sorted_array_to_binary_search_tree");
 //        runSolution("balanced_binary_tree");
 //        runSolution("path_sum_ii");
-        runSolution("flatten_binary_tree_to_linked_list");
+//        runSolution("flatten_binary_tree_to_linked_list");
+//        runSolution("best_time_to_buy_and_sell_stock");
+//        runSolution("binary_tree_maximum_path_sum");
+//        runSolution("sum_root_to_leaf_numbers");
+//        runSolution("surrounded_regions");
+//        runSolution("clone_graph");
+//        runSolution("gas_station");
+//        runSolution("single_number");
+//        runSolution("word_break");
+//        runSolution("word_break_ii");
+//        runSolution("reorder_list");
+//        runSolution("binary_tree_preorder_traversal");
+//        runSolution("binary_tree_postorder_traversal");
+//        runSolution("find_minimum_in_rotated_sorted_array");
+//        runSolution("factorial_trailing_zeroes");
+//        runSolution("number_of_islands");
+//        runSolution("happy_number");
+//        runSolution("course_schedule");
+//        runSolution("implement_trie_prefix_tree");
+//        runSolution("minimum_size_subarray_sum");
+//        runSolution("course_schedule_ii");
+//        runSolution("add_and_search_word_data_structure_design");
+//        runSolution("word_search_ii");
+//        runSolution("shortest_palindrome");
+//        runSolution("combination_sum_iii");
+//        runSolution("the_skyline_problem");
+//        runSolution("contains_duplicate_ii");
+//        runSolution("rectangle_area");
+//        runSolution("invert_binary_tree");
+//        runSolution("summary_ranges");
+//        runSolution("majority_element_ii");
+//        runSolution("kth_smallest_element_in_a_bst");
+//        runSolution("palindrome_linked_list");
+//        runSolution("lowest_common_ancestor_of_a_binary_search_tree");
+        runSolution("product_of_array_except_self");
     }
 
     private static void runSolution(String solutionName) {

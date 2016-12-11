@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.*;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Queue;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,6 +15,10 @@ import java.util.regex.Pattern;
 public class BaseSolution {
 
     public void runTestCases() {
+        if (runCustomizedTestCases()) {
+            return;
+        }
+
         Method method = getRunMethod();
         Type[] genericParameterTypes = method.getGenericParameterTypes();
         Class<?>[] parameterTypes = method.getParameterTypes();
@@ -32,7 +33,7 @@ public class BaseSolution {
                 String line = reader.readLine();
                 if (line == null) break;
                 if (i < genericParameterTypes.length) {
-                    Class<?> cls = (Class<?>) genericParameterTypes[i];
+                    //Class<?> cls = (Class<?>) genericParameterTypes[i];
                     params[i] = convertToParams(genericParameterTypes[i], line);
                     i++;
                     if (i == genericParameterTypes.length) {
@@ -52,6 +53,10 @@ public class BaseSolution {
                 }
             }
         }
+    }
+
+    public boolean runCustomizedTestCases() {
+        return false;
     }
 
     protected void invokeRunMethod(Method method, Object[] params) {
@@ -99,6 +104,8 @@ public class BaseSolution {
             return readListNode(inputParam);
         } else if (typeName.equals(TreeNode.class.toString())) {
             return readTreeNode(inputParam);
+        } else if (typeName.equals(UndirectedGraphNode.class.toString())) {
+            return readUndirectedGraphNode(inputParam);
         } else if (typeName.equals("class [Lhouxiaomu.leetcodeplayground.ListNode;")) {
             return readObjectArray(type, inputParam);
         } else if (typeName.equals("class [[C")) {
@@ -106,8 +113,48 @@ public class BaseSolution {
         } else if (typeName.equals("class [[I")) {
             //return read2DimIntArray(type, inputParam);
             return readObjectArray(type, inputParam);
+        } else if (typeName.equals("java.util.Set<java.lang.String>")) {
+            return readStringSet(inputParam);
         }
         return null;
+    }
+
+    private Object readStringSet(String inputParam) {
+        String[] strings = readStringArray(inputParam);
+        Set<String> set = new HashSet<>();
+        for (String s : strings) {
+            set.add(s);
+        }
+        return set;
+    }
+
+    private Object readUndirectedGraphNode(String inputParam) {
+        UndirectedGraphNode firstNode = null;
+        inputParam = inputParam.replace("{", "");
+        inputParam = inputParam.replace("}", "");
+        String[] split = inputParam.split("#");
+        Map<Integer, UndirectedGraphNode> map = new HashMap<>();
+        for (String nodeStr : split) {
+            String[] vals = nodeStr.split(",");
+            int nodeVal = Integer.valueOf(vals[0]);
+            UndirectedGraphNode node = map.get(nodeVal);
+            if (node == null) {
+                node = new UndirectedGraphNode(nodeVal);
+                map.put(nodeVal, node);
+            }
+            if (firstNode == null) firstNode = node;
+            map.put(nodeVal, node);
+            for (int i = 1; i < vals.length; i++) {
+                int v = Integer.valueOf(vals[i]);
+                UndirectedGraphNode neighbor = map.get(v);
+                if (neighbor == null) {
+                    neighbor = new UndirectedGraphNode(v);
+                    map.put(v, neighbor);
+                }
+                node.neighbors.add(neighbor);
+            }
+        }
+        return firstNode;
     }
 
     private Object read2DimCharArray(Type type, String inputParam) {
