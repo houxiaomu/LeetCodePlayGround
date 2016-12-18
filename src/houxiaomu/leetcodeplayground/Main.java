@@ -110,7 +110,31 @@ public class Main {
 //        runSolution("kth_smallest_element_in_a_bst");
 //        runSolution("palindrome_linked_list");
 //        runSolution("lowest_common_ancestor_of_a_binary_search_tree");
-        runSolution("product_of_array_except_self");
+//        runSolution("product_of_array_except_self");
+//        runSolution("different_ways_to_add_parentheses");
+//        runSolution("binary_tree_paths");
+//        runSolution("single_number_iii");
+//        runSolution("missing_number");
+//        runSolution("integer_to_english_words");
+//        runSolution("h_index_ii");
+//        runSolution("first_bad_version");
+//        runSolution("expression_add_operators");
+//        runSolution("move_zeroes");
+//        runSolution("find_median_from_data_stream");
+//        runSolution("serialize_and_deserialize_binary_tree");
+//        runSolution("additive_number");
+//    runSolution("minimum_height_trees");
+//        runSolution("hamming_distance");
+//        runSolution("total_hamming_distance");
+//        runSolution("matchsticks_to_square");
+//        runSolution("concatenated_words");
+//        runSolution("circular_array_loop");
+//        runSolution("sort_characters_by_frequency");
+//        runSolution("delete_node_in_a_bst");
+//        runSolution("find_all_duplicates_in_an_array");
+//        runSolution("find_all_numbers_disappeared_in_an_array");
+//        runSolution("add_two_numbers_ii");
+        runSolution("minimum_genetic_mutation");
     }
 
     private static void runSolution(String solutionName) {
