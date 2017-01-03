@@ -1,5 +1,7 @@
 package houxiaomu.leetcodeplayground;
 
+import java.lang.reflect.Method;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -134,7 +136,47 @@ public class Main {
 //        runSolution("find_all_duplicates_in_an_array");
 //        runSolution("find_all_numbers_disappeared_in_an_array");
 //        runSolution("add_two_numbers_ii");
-        runSolution("minimum_genetic_mutation");
+//        runSolution("minimum_genetic_mutation");
+//        runSolution("validate_ip_address");
+//        runSolution("unique_substrings_in_wraparound_string");
+//        runSolution("island_perimeter");
+//        runSolution("minimum_moves_to_equal_array_elements_ii");
+//        runSolution("repeated_substring_pattern");
+//        runSolution("k_th_smallest_in_lexicographical_order");
+//        runSolution("path_sum_iii");
+//        runSolution("find_all_anagrams_in_a_string");
+//        runSolution("find_right_interval");
+//        runSolution("all_oone_data_structure");
+//        runSolution("longest_repeating_character_replacement");
+//        runSolution("reconstruct_original_digits_from_english");
+//        runSolution("pacific_atlantic_water_flow");
+//        runSolution("partition_equal_subset_sum");
+//        runSolution("arithmetic_slices");
+//        runSolution("trapping_rain_water_ii");
+//        runSolution("queue_reconstruction_by_height");
+//        runSolution("convert_a_number_to_hexadecimal");
+//        runSolution("remove_k_digits");
+//        runSolution("evaluate_division");
+//        runSolution("integer_replacement");
+//        runSolution("decode_string");
+//        runSolution("utf_8_validation");
+//        runSolution("is_subsequence");
+//        runSolution("perfect_rectangle");
+//        runSolution("longest_absolute_file_path");
+//        runSolution("lexicographical_numbers");
+//        runSolution("shuffle_an_array");
+//    runSolution("insert_delete_getrandom_o1");
+//        runSolution("combination_sum_iv");
+//        runSolution("guess_number_higher_or_lower_ii");
+//        runSolution("find_k_pairs_with_smallest_sums");
+//        runSolution("super_pow");
+//        runSolution("sum_of_two_integers");
+//        runSolution("populating_next_right_pointers_in_each_node");
+//        runSolution("binary_search_tree_iterator");
+//        runSolution("binary_tree_right_side_view");
+//        runSolution("binary_tree_upside_down");
+//        runSolution("closest_binary_search_tree_value");
+        runSolution("binary_tree_longest_consecutive_sequence");
     }
 
     private static void runSolution(String solutionName) {
@@ -143,7 +185,12 @@ public class Main {
         try {
             Class<?> clazz = Class.forName(className);
             BaseSolution solution = (BaseSolution) clazz.newInstance();
-            solution.runTestCases();
+            Method isFuncTest = clazz.getMethod("isFunctionalTestCase");
+            if ((boolean) isFuncTest.invoke(solution)) {
+                solution.runFuncTestCases();
+            } else {
+                solution.runTestCases();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

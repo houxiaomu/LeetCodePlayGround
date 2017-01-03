@@ -14,6 +14,62 @@ import java.util.regex.Pattern;
  */
 public class BaseSolution {
 
+    void runFuncTestCases() throws Exception {
+        BufferedReader reader = null;
+        Class<?> solutionClazz = this.getClass();
+        try {
+            InputStream is = solutionClazz.getResourceAsStream("./testcase.txt");
+            reader = new BufferedReader(new InputStreamReader(is));
+            long time = System.currentTimeMillis();
+            while (true) {
+                String line = reader.readLine();
+                if (line == null) break;
+                String[] funcs = readStringArray(line);
+                line = reader.readLine().trim();
+                line = line.substring(1, line.length() - 2);
+                String[] params = line.split("],");
+                if (funcs.length != params.length) {
+                    throw new Exception("invalid parameters!!!");
+                }
+                Class<?> testClazz = null;
+                Object testSolution = null;
+                for (int i = 0; i < funcs.length; i++) {
+                    String func = funcs[i];
+                    String param = params[i].substring(1);
+                    if (i == 0) {
+                        String innerClassName = solutionClazz.getPackage().getName() + "." + func;
+                        testClazz = Class.forName(innerClassName);
+                        Constructor<?>[] declaredConstructors = testClazz.getDeclaredConstructors();
+                        System.out.println("declaredConstructors len= " + declaredConstructors.length);
+                        Type[] genericParameterTypes = declaredConstructors[0].getGenericParameterTypes();
+                        if (genericParameterTypes.length == 0) {
+                            testSolution = declaredConstructors[0].newInstance();
+                        } else {
+                            Object o = convertToParams(genericParameterTypes[0], line);
+                            testSolution = declaredConstructors[0].newInstance(o);
+                        }
+                    } else {
+                        Method method = testClazz.getMethod(func);
+                        Type[] genericParameterTypes = method.getGenericParameterTypes();
+                        Object o = convertToParams(genericParameterTypes[i], line);
+                        method.invoke(testSolution, o);
+                    }
+                }
+            }
+            System.out.println("total time: " + (System.currentTimeMillis() - time) + "ms");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (Exception e) {
+                }
+            }
+        }
+
+    }
+
     public void runTestCases() {
         if (runCustomizedTestCases()) {
             return;
@@ -21,7 +77,6 @@ public class BaseSolution {
 
         Method method = getRunMethod();
         Type[] genericParameterTypes = method.getGenericParameterTypes();
-        Class<?>[] parameterTypes = method.getParameterTypes();
         BufferedReader reader = null;
         try {
             InputStream is = this.getClass().getResourceAsStream("./testcase.txt");
@@ -33,7 +88,6 @@ public class BaseSolution {
                 String line = reader.readLine();
                 if (line == null) break;
                 if (i < genericParameterTypes.length) {
-                    //Class<?> cls = (Class<?>) genericParameterTypes[i];
                     params[i] = convertToParams(genericParameterTypes[i], line);
                     i++;
                     if (i == genericParameterTypes.length) {
@@ -56,6 +110,10 @@ public class BaseSolution {
     }
 
     public boolean runCustomizedTestCases() {
+        return false;
+    }
+
+    public boolean isFunctionalTestCase() {
         return false;
     }
 
@@ -94,16 +152,24 @@ public class BaseSolution {
         String typeName = type.toString();
         if (typeName.equals("int")) {
             return Integer.valueOf(inputParam);
+        } else if (typeName.equals("double")) {
+            return Double.valueOf(inputParam);
         } else if (typeName.equals(String.class.toString())) {
             return readString(inputParam);
         } else if (typeName.equals("class [I")) {
             return readIntArray(inputParam);
+        } else if (typeName.equals("class [D")) {
+            return readDoubleArray(inputParam);
         } else if (typeName.equals("class [Ljava.lang.String;")) {
             return readStringArray(inputParam);
+        } else if (typeName.equals("class [[Ljava.lang.String;")) {
+            return readObjectArray(type, inputParam);
         } else if (typeName.equals(ListNode.class.toString())) {
             return readListNode(inputParam);
         } else if (typeName.equals(TreeNode.class.toString())) {
             return readTreeNode(inputParam);
+        } else if (typeName.equals(Interval.class.toString())) {
+            return readInterval(inputParam);
         } else if (typeName.equals(UndirectedGraphNode.class.toString())) {
             return readUndirectedGraphNode(inputParam);
         } else if (typeName.equals("class [Lhouxiaomu.leetcodeplayground.ListNode;")) {
@@ -115,8 +181,16 @@ public class BaseSolution {
             return readObjectArray(type, inputParam);
         } else if (typeName.equals("java.util.Set<java.lang.String>")) {
             return readStringSet(inputParam);
+        } else if (typeName.equals("class [Lhouxiaomu.leetcodeplayground.Interval;")) {
+            return readObjectArray(type, inputParam);
         }
         return null;
+    }
+
+    private Object readInterval(String inputParam) {
+        int[] ints = readIntArray(inputParam);
+        Interval interval = new Interval(ints[0], ints[1]);
+        return interval;
     }
 
     private Object readStringSet(String inputParam) {
@@ -196,7 +270,7 @@ public class BaseSolution {
         return null;
     }
 
-    private String[] readStringArray(String line) {
+    private static String[] readStringArray(String line) {
         String regex = "\\\"([^\\\"]*)\\\"";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(line);
@@ -272,6 +346,22 @@ public class BaseSolution {
         return result;
     }
 
+    private double[] readDoubleArray(String line) {
+        ArrayList<String> list = new ArrayList<>();
+        String regex = "[-+]?[0-9]*\\.?[0-9]+";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(line);
+        while (m.find()) {
+            list.add(m.group(0));
+        }
+
+        double[] result = new double[list.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = Double.valueOf(list.get(i));
+        }
+        return result;
+    }
+
     private ListNode readListNode(String line) {
         ListNode head = null;
         ListNode prevNode = null;
@@ -296,13 +386,21 @@ public class BaseSolution {
     }
 
     protected void printResult(Object result) {
-        if (result == null) {
-            return;
-        }
+        System.out.println(resultToString(result));
+    }
 
+    private String resultToString(Object result) {
+        if (result == null) {
+            return "";
+        }
+        StringBuilder output = new StringBuilder();
         String name = result.getClass().getName();
         if (name.startsWith("[I")) {
-            System.out.println(Arrays.toString((int[]) result));
+            output.append(Arrays.toString((int[]) result));
+        } else if (name.startsWith("[[I")) {
+            output.append(Arrays.deepToString((int[][]) result));
+        } else if (name.startsWith("[D")) {
+            output.append(Arrays.toString((double[]) result));
         } else if (name.equals(ListNode.class.getName())) {
             StringBuilder sb = new StringBuilder();
             sb.append("[");
@@ -314,11 +412,18 @@ public class BaseSolution {
             }
             sb.deleteCharAt(sb.length() - 1);
             sb.append("]");
-            System.out.println(sb.toString());
+            output.append(sb.toString());
         } else if (name.equals(TreeNode.class.getName())) {
             TreePrinter.printNode((TreeNode) result);
+        } else if (result instanceof List) {
+            output.append("[");
+            for (Object item : (List) result) {
+                output.append(resultToString(item)).append(",");
+            }
+            output.append("]");
         } else {
-            System.out.println(result);
+            output.append(result.toString());
         }
+        return output.toString();
     }
 }
