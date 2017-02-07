@@ -176,7 +176,12 @@ public class Main {
 //        runSolution("binary_tree_right_side_view");
 //        runSolution("binary_tree_upside_down");
 //        runSolution("closest_binary_search_tree_value");
-        runSolution("binary_tree_longest_consecutive_sequence");
+//        runSolution("binary_tree_longest_consecutive_sequence");
+//        runSolution("find_leaves_of_binary_tree");
+//        runSolution("factor_combinations");
+//        runSolution("palindrome_partitioning");
+//        runSolution("most_frequent_subtree_sum");
+        runSolution("increasing_subsequences");
     }
 
     private static void runSolution(String solutionName) {
